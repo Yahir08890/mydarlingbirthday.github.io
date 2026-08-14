@@ -182,3 +182,58 @@ button {
     margin-top: 15px;
     color: #ffd1dc; /* Un rosita claro muy bonito para los textos */
 }
+/* =========================================
+   PANTALLA DE LETRAS (REPRODUCTOR)
+========================================= */
+#pantalla-lyrics {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('Captura de pantalla 2026-08-14 153634.png');
+    background-size: cover;
+    background-position: center;
+    background-color: #0b132b; /* Color azul oscuro por si la imagen tarda en cargar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50; /* Para que quede por encima de todo */
+}
+
+/* Contenedor donde suben las letras */
+.letras-scroll {
+    height: 60vh;
+    width: 90%;
+    max-width: 600px;
+    overflow-y: scroll; /* Permite hacer scroll */
+    -ms-overflow-style: none;  /* Oculta barra en IE y Edge */
+    scrollbar-width: none;  /* Oculta barra en Firefox */
+    display: flex;
+    flex-direction: column;
+    padding: 30vh 0; /* Espacio arriba y abajo para que la letra empiece centrada */
+}
+
+/* Ocultar barra de scroll en Chrome/Safari */
+.letras-scroll::-webkit-scrollbar {
+    display: none; 
+}
+
+/* Estilo base de las letras (blanco transparente) */
+.linea-letra {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 20px;
+    margin: 15px 0;
+    transition: all 0.5s ease;
+    text-align: center;
+    font-weight: normal;
+}
+
+/* Estilo de la letra cuando está ACTIVA (Blanco brillante y grande) */
+.linea-letra.activa {
+    color: rgba(255, 255, 255, 1);
+    font-size: 28px;
+    font-weight: bold;
+    transform: scale(1.1);
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8); /* Brillo mágico */
+}
