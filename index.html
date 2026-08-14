@@ -109,3 +109,85 @@
 </html>
 <!-- Reproductor de música oculto -->
 <audio id="musicaFondo" src="https://youtu.be/G5kH8JQs7LY?si=zSjxoHAdnESVlHuU"></audio>
+<!-- CÓDIGO INTERACTIVO (JavaScript) -->
+<script>
+    const btnNo = document.getElementById('btn-no');
+    const btnSi = document.getElementById('btn-si');
+    const pantallaInicial = document.getElementById('pantalla-inicial'); // Nombre corregido
+    const pantallaCarta = document.getElementById('pantalla-carta');     // Nombre corregido
+    const btnRevelar = document.getElementById('btn-revelar');
+    const itemsCosas = document.querySelectorAll('.lista-cosas li');
+    
+    // Aquí conectamos la música
+    const musica = document.getElementById('musicaFondo'); 
+
+    // Los mensajes que saldrán cuando le dé a "No"
+    const mensajesNo = [
+        "¿Segura? 🥺",
+        "Piénsalo bien...",
+        "¡Ándale di que sí!",
+        "Me vas a hacer llorar 😭",
+        "No puedes decir que no"
+    ];
+    let contadorNo = 0;
+
+    btnNo.addEventListener('click', () => {
+        if (contadorNo < mensajesNo.length) {
+            btnNo.textContent = mensajesNo[contadorNo];
+            let tamañoActual = parseFloat(window.getComputedStyle(btnSi).fontSize);
+            btnSi.style.fontSize = (tamañoActual + 6) + 'px';
+            contadorNo++;
+        } else {
+            btnNo.disabled = true;
+        }
+    });
+
+    // Cuando le da a "Sí", ocultar inicio, mostrar carta, música y corazones
+    btnSi.addEventListener('click', () => {
+        
+        // 1. Reproducir música (asegúrate de tener tu archivo de audio listo)
+        if (musica) {
+            musica.play();
+        }
+
+        // 2. Cambiar de pantalla
+        pantallaInicial.classList.add('oculto');
+        pantallaCarta.classList.remove('oculto');
+
+        // 3. Activar lluvia de corazones
+        crearLluviaCorazones();
+    });
+
+    // Revelar las "cosas que me gustan" una por una
+    let cosasMostradas = 0;
+    btnRevelar.addEventListener('click', () => {
+        if (cosasMostradas < itemsCosas.length) {
+            itemsCosas[cosasMostradas].classList.remove('oculto');
+            cosasMostradas++;
+        }
+        if (cosasMostradas === itemsCosas.length) {
+            btnRevelar.style.display = 'none'; // Oculta el botón al terminar
+        }
+    });
+
+    // Función que crea los corazones cayendo
+    function crearLluviaCorazones() {
+        for (let i = 0; i < 40; i++) {
+            setTimeout(() => {
+                const corazon = document.createElement('div');
+                corazon.classList.add('corazon');
+                corazon.innerHTML = '❤️'; // Puedes cambiarlo por 💖
+
+                corazon.style.left = Math.random() * 100 + 'vw';
+                corazon.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+                document.body.appendChild(corazon);
+
+                setTimeout(() => {
+                    corazon.remove();
+                }, 5000); 
+
+            }, i * 100);
+        }
+    }
+</script>
