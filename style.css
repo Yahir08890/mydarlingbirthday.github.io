@@ -2,7 +2,7 @@
 body {
     margin: 0;
     height: 100vh; /* Fijo a la altura de la pantalla */
-    background: #12091f;
+    background: #A266D1;
     color: white;
     font-family: Arial, sans-serif;
     display: flex;
@@ -60,7 +60,7 @@ button {
 
 #btn-si {
     background-color: white;
-    color: #12091f;
+    color: #A266D1;
     font-weight: bold;
 }
 
