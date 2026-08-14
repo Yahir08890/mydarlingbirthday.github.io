@@ -54,62 +54,7 @@
     </div>
 
     <!-- CÓDIGO INTERACTIVO (JavaScript) -->
-    <script>
-        const btnNo = document.getElementById('btn-no');
-        const btnSi = document.getElementById('btn-si');
-        const pantallaInicial = document.getElementById('pantalla-inicial');
-        const pantallaCarta = document.getElementById('pantalla-carta');
-        const btnRevelar = document.getElementById('btn-revelar');
-        const itemsCosas = document.querySelectorAll('.lista-cosas li');
-
-        // Los mensajes que saldrán cuando le dé a "No"
-        const mensajesNo = [
-            "¿Segura? 🥺",
-            "Piénsalo bien...",
-            "¡Ándale di que sí!",
-            "Me vas a hacer llorar 😭",
-            "No puedes decir que no"
-        ];
-        let contadorNo = 0;
-
-        btnNo.addEventListener('click', () => {
-            if (contadorNo < mensajesNo.length) {
-                // Cambia el texto del botón NO
-                btnNo.textContent = mensajesNo[contadorNo];
-                
-                // Hace el botón SÍ más grande cada vez que presiona NO
-                let tamañoActual = parseFloat(window.getComputedStyle(btnSi).fontSize);
-                btnSi.style.fontSize = (tamañoActual + 6) + 'px';
-                contadorNo++;
-            } else {
-                // Cuando se acaban los mensajes, el botón se deshabilita
-                btnNo.disabled = true;
-            }
-        });
-
-        // Cuando le da a "Sí", ocultar inicio y mostrar carta
-        btnSi.addEventListener('click', () => {
-            pantallaInicial.classList.add('oculto');
-            pantallaCarta.classList.remove('oculto');
-        });
-
-        // Revelar las "cosas que me gustan" una por una
-        let cosasMostradas = 0;
-        btnRevelar.addEventListener('click', () => {
-            if (cosasMostradas < itemsCosas.length) {
-                itemsCosas[cosasMostradas].classList.remove('oculto');
-                cosasMostradas++;
-            }
-            if (cosasMostradas === itemsCosas.length) {
-                btnRevelar.style.display = 'none'; // Oculta el botón al terminar
-            }
-        });
-    </script>
-</body>
-</html>
-<!-- Reproductor de música oculto -->
-<audio id="musicaFondo" src="https://youtu.be/G5kH8JQs7LY?si=zSjxoHAdnESVlHuU"></audio>
-<!-- CÓDIGO INTERACTIVO (JavaScript) -->
+   <!-- CÓDIGO INTERACTIVO (JavaScript) -->
 <script>
     const btnNo = document.getElementById('btn-no');
     const btnSi = document.getElementById('btn-si');
@@ -191,3 +136,5 @@
         }
     }
 </script>
+<!-- Reproductor de música oculto -->
+<audio id="musicaFondo" src="https://youtu.be/G5kH8JQs7LY?si=zSjxoHAdnESVlHuU"></audio>
