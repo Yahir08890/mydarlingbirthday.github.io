@@ -186,7 +186,7 @@ button {
    PANTALLA DE LETRAS (REPRODUCTOR)
 ========================================= */
 #pantalla-lyrics {
-    position: absolute;
+    position: fixed; /* Mantiene la pantalla fija sin mostrar el fondo morado */
     top: 0;
     left: 0;
     width: 100vw;
@@ -194,46 +194,45 @@ button {
     background-image: url('Captura de pantalla 2026-08-14 153634.png');
     background-size: cover;
     background-position: center;
-    background-color: #0b132b; /* Color azul oscuro por si la imagen tarda en cargar */
+    background-color: #0b132b;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 50; /* Para que quede por encima de todo */
+    z-index: 999; /* Asegura que quede por encima de todo */
 }
 
 /* Contenedor donde suben las letras */
 .letras-scroll {
-    height: 60vh;
+    height: 70vh;
     width: 90%;
-    max-width: 600px;
-    overflow-y: scroll; /* Permite hacer scroll */
-    -ms-overflow-style: none;  /* Oculta barra en IE y Edge */
-    scrollbar-width: none;  /* Oculta barra en Firefox */
+    max-width: 650px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     display: flex;
     flex-direction: column;
-    padding: 30vh 0; /* Espacio arriba y abajo para que la letra empiece centrada */
+    padding: 35vh 0;
 }
 
-/* Ocultar barra de scroll en Chrome/Safari */
 .letras-scroll::-webkit-scrollbar {
     display: none; 
 }
 
-/* Estilo base de las letras (blanco transparente) */
+/* Estilo de la letra no activa */
 .linea-letra {
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 20px;
-    margin: 15px 0;
-    transition: all 0.5s ease;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 22px;
+    margin: 18px 0;
+    transition: all 0.4s ease;
     text-align: center;
     font-weight: normal;
 }
 
-/* Estilo de la letra cuando está ACTIVA (Blanco brillante y grande) */
+/* Estilo de la letra ACTIVA */
 .linea-letra.activa {
-    color: rgba(255, 255, 255, 1);
-    font-size: 28px;
+    color: #ffffff;
+    font-size: 30px;
     font-weight: bold;
-    transform: scale(1.1);
-    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8); /* Brillo mágico */
+    transform: scale(1.08);
+    text-shadow: 0px 0px 18px rgba(255, 255, 255, 0.9);
 }
