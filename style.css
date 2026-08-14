@@ -168,3 +168,17 @@ button {
         transform: translateY(110vh);
     }
 }
+/* Estilo para los textos dentro de la galería */
+.item-galeria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.texto-galeria {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 8px;
+    color: #ffd1dc; /* Un rosita claro muy bonito para los textos */
+}
