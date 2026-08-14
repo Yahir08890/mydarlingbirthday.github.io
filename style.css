@@ -1,40 +1,152 @@
+/* Configuraciones generales */
 body {
     margin: 0;
-    min-height: 100vh;
-
+    height: 100vh; /* Fijo a la altura de la pantalla */
     background: #12091f;
     color: white;
-
     font-family: Arial, sans-serif;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
+    overflow: hidden; /* Evita que toda la página haga scroll, el scroll será solo en la carta */
 }
 
-.contenedor {
+/* Clases útiles */
+.oculto {
+    display: none !important;
+}
+
+/* Contenedores principales */
+.contenedor, .contenedor-carta {
     width: 90%;
     max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Tipografía e imagen inicial */
 h1 {
-    font-size: 50px;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 20px;
+}
+.gif-portada {
+    max-width: 250px;
+    border-radius: 15px;
     margin-bottom: 20px;
 }
 
-p {
-    font-size: 24px;
+/* Botones de la pregunta */
+.botones {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center; /* Centra los botones si uno crece mucho */
+    margin-top: 20px;
 }
 
 button {
     font-size: 20px;
     padding: 12px 25px;
-    margin: 10px;
-
     border: none;
     border-radius: 12px;
-
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#btn-si {
+    background-color: white;
+    color: #12091f;
+    font-weight: bold;
+}
+
+#btn-no {
+    background-color: #5a4b7c; /* Un morado oscuro para que contraste menos */
+    color: white;
+}
+
+/* ESTILOS DE LA CARTA */
+.carta {
+    background-color: rgba(255, 255, 255, 0.08); /* Fondo semi transparente elegante */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    width: 100%;
+    max-height: 85vh; /* Máximo 85% del alto de la pantalla del celular */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Aquí está la magia del Scroll */
+.contenido-scroll {
+    overflow-y: auto; /* Permite hacer scroll vertical */
+    padding-right: 15px;
+    text-align: left; /* Alinea el texto de la carta a la izquierda */
+}
+
+/* Estilizar la barrita de scroll */
+.contenido-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+.contenido-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+.contenido-scroll::-webkit-scrollbar-thumb {
+    background: #8b5cf6; /* Morado bonito para el scroll */
+    border-radius: 10px;
+}
+
+/* Lista de cosas que te gustan */
+.lista-cosas {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-cosas li {
+    background: rgba(139, 92, 246, 0.2);
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #8b5cf6;
+    animation: aparecer 0.5s ease forwards;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.btn-pequeno {
+    font-size: 16px;
+    padding: 8px 15px;
+    background-color: #8b5cf6;
+    color: white;
+    margin-top: 10px;
+}
+
+/* Fotos */
+.galeria {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+.galeria img {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+/* Adaptación para pantallas de celulares pequeños */
+@media (max-width: 480px) {
+    h1 { font-size: 30px; }
+    p, .carta p { font-size: 16px; }
+    button { font-size: 18px; }
+    .carta { padding: 15px; }
 }
