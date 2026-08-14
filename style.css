@@ -150,3 +150,21 @@ button {
     button { font-size: 18px; }
     .carta { padding: 15px; }
 }
+/* =========================================
+   LLUVIA DE CORAZONES
+========================================= */
+.corazon {
+    position: absolute;
+    top: -10vh; /* Inicia un poco más arriba de la pantalla invisible */
+    font-size: 25px; /* Tamaño del corazón */
+    animation: caer linear forwards; /* Ejecuta la animación 'caer' */
+    z-index: 1000; /* Asegura que caigan por encima de todo lo demás */
+    pointer-events: none; /* Evita que el usuario los presione por accidente */
+}
+
+/* Animación para que caigan hasta el fondo */
+@keyframes caer {
+    to {
+        transform: translateY(110vh);
+    }
+}
