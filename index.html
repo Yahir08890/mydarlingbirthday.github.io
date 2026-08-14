@@ -67,17 +67,26 @@
                         <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGJjcHRqem9penFuMDlna3JlNmVnMXN5ZTd6NXloM2ZjaGg3NXRzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tF2MQQ8xef5f2/giphy.gif" alt="Foto 3">
                         <p class="texto-galeria">Simplemente estábamos destinados a estar juntos como Jack y Sally 💗</p>
                     </div>
-                        <div class="item-galeria">
-                        <img src=https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3d25ndmYxcXJ2aXAxbjAxdDNxb2ticzRzNWF3cjZvcGhnZGRyNXpxaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3ornjX5H61CKdFonks/giphy.gif alt="Foto 4">
-                        <p class="texto-galeria">Quiero estar contigo como Snoopy siempre esta con Woodstock 💗</p>
-                    </div>
+                    <div class="item-galeria">
+                        <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3d25ndmYxcXJ2aXAxbjAxdDNxb2ticzRzNWF3cjZvcGhnZGRyNXpxaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3ornjX5H61CKdFonks/giphy.gif" alt="Foto 4">
+                        <p class="texto-galeria">Quiero estar contigo como Snoopy siempre está con Woodstock 💗</p>
                     </div>
                 </div>
+
+                <!-- Botón para ir al reproductor al final de la carta -->
+                <button id="btn-siguiente" class="btn-pequeno" style="margin-top: 25px; width: 100%; font-size: 18px; padding: 12px;">Escuchar nuestra canción 🎶</button>
             </div>
         </div>
     </div>
 
-    <!-- Etiqueta de audio oculta para evitar errores -->
+    <!-- PANTALLA REPRODUCTOR DE LETRAS -->
+    <div class="contenedor-lyrics oculto" id="pantalla-lyrics">
+        <div class="letras-scroll" id="letras-scroll">
+            <!-- JavaScript inyectará la letra aquí -->
+        </div>
+    </div>
+
+    <!-- Etiqueta de audio oculta -->
     <audio id="musicaFondo" src="Jósean Log - Beso (Lyric Video).mp3"></audio>
 
     <!-- CÓDIGO INTERACTIVO (JavaScript) -->
@@ -89,6 +98,10 @@
         const btnRevelar = document.getElementById('btn-revelar');
         const itemsCosas = document.querySelectorAll('.lista-cosas li');
         const musica = document.getElementById('musicaFondo');
+
+        const btnSiguiente = document.getElementById('btn-siguiente');
+        const pantallaLyrics = document.getElementById('pantalla-lyrics');
+        const letrasScroll = document.getElementById('letras-scroll');
 
         const mensajesNo = [
             "¿Segura? 🥺",
@@ -111,15 +124,25 @@
             }
         });
 
+        // Al hacer clic en "Sí", se abre la carta y caen los corazones
         btnSi.addEventListener('click', () => {
-            if (musica) {
-                musica.play().catch(e => console.log("Audio play blocked or missing"));
-            }
             pantallaInicial.classList.add('oculto');
             pantallaCarta.classList.remove('oculto');
             crearLluviaCorazones();
         });
 
+        // Al hacer clic en el botón al final de la carta, inicia la canción y la pantalla de letras
+        btnSiguiente.addEventListener('click', () => {
+            pantallaCarta.classList.add('oculto');
+            pantallaLyrics.classList.remove('oculto');
+            
+            if (musica) {
+                musica.play().catch(e => console.log("Audio play blocked or missing"));
+                iniciarLetras();
+            }
+        });
+
+        // Revelar la lista "Cosas que amo de ti" una por una
         let cosasMostradas = 0;
         btnRevelar.addEventListener('click', () => {
             if (cosasMostradas < itemsCosas.length) {
@@ -148,6 +171,61 @@
                     }, 5000); 
 
                 }, i * 100);
+            }
+        }
+
+        // =========================================
+        // LETRA Y TIEMPOS DE "BESO" (Jósean Log)
+        // Puedes cambiar los números del tiempo en segundos para ajustar el ritmo
+        // =========================================
+        const letrasCancion = [
+            { tiempo: 0, texto: "🎶 (Música) 🎶" },
+            { tiempo: 10, texto: "Dame un beso que me dure hasta el lunes" },
+            { tiempo: 15, texto: "Que me llene de luz y que me quite el estrés" },
+            { tiempo: 20, texto: "Un besito que me cure esta amargura" },
+            { tiempo: 25, texto: "Que me haga olvidar las penas otra vez" },
+            { tiempo: 30, texto: "Dame un beso de esos que no se me olvidan" },
+            { tiempo: 35, texto: "De los que me hacen volar hasta el cielo otra vez" },
+            { tiempo: 40, texto: "Un besito bien sabroso, sabor a miel" },
+            { tiempo: 45, texto: "Que me llene la boca y el corazón también" },
+            { tiempo: 52, texto: "💗 Te amo mi niña hermosa 💗" }
+        ];
+
+        function iniciarLetras() {
+            letrasCancion.forEach((linea, index) => {
+                let p = document.createElement('p');
+                p.classList.add('linea-letra');
+                p.id = 'linea-' + index;
+                p.innerText = linea.texto;
+                letrasScroll.appendChild(p);
+            });
+
+            musica.addEventListener('timeupdate', () => {
+                let tiempoActual = musica.currentTime;
+                
+                for (let i = 0; i < letrasCancion.length; i++) {
+                    let tiempoLinea = letrasCancion[i].tiempo;
+                    let tiempoSiguiente = (i < letrasCancion.length - 1) ? letrasCancion[i+1].tiempo : 9999;
+
+                    if (tiempoActual >= tiempoLinea && tiempoActual < tiempoSiguiente) {
+                        resaltarLinea(i);
+                        break;
+                    }
+                }
+            });
+        }
+
+        let indiceActual = -1;
+        function resaltarLinea(index) {
+            if (indiceActual === index) return;
+            indiceActual = index;
+
+            document.querySelectorAll('.linea-letra').forEach(el => el.classList.remove('activa'));
+            
+            let lineaActiva = document.getElementById('linea-' + index);
+            if (lineaActiva) {
+                lineaActiva.classList.add('activa');
+                lineaActiva.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     </script>
