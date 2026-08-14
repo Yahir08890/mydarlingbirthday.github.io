@@ -3,22 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para ti 💗</title>
+    <title>Para ti 💜</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <div class="contenedor">
-
-        <h1>Feliz cumpleaños mi amor 💗</h1>
-
+    
+    <!-- PANTALLA INICIAL (La de la pregunta) -->
+    <div class="contenedor" id="pantalla-inicial">
+        <h1>Feliz cumpleaños mi amor 💜</h1>
+        
+        <!-- Aquí puedes poner un GIF bonito. Solo cambia el enlace de src -->
+        <img src="https://media.giphy.com/media/xUPGcxpCV81ebKh7Vu/giphy.gif" alt="Abrazo" class="gif-portada">
+        
         <p>¿Quieres ver tu regalo?</p>
-
-        <button>Sí 💗</button>
-        <button>No</button>
-
+        
+        <div class="botones">
+            <button id="btn-si">Sí 💜</button>
+            <button id="btn-no">No</button>
+        </div>
     </div>
 
+    <!-- PANTALLA DE LA CARTA (Oculta al inicio, aparece al darle "Sí") -->
+    <div class="contenedor-carta oculto" id="pantalla-carta">
+        <div class="carta">
+            <h2>Para mi niña hermosa...</h2>
+            
+            <!-- Esta sección tiene el scroll -->
+            <div class="contenido-scroll">
+                <p>Aquí puedes escribir toda tu carta. No importa si es larguísima, el scroll hacia abajo permitirá que ella pueda leer todo cómodamente. Puedes dividir en varios párrafos usando estas etiquetas de "p".</p>
+                <p>Eres la persona más increíble...</p>
+
+                <h3>Cosas que me gustan de ti:</h3>
+                <ul class="lista-cosas" id="lista-cosas">
+                    <li class="oculto">1. Tu sonrisa hermosa.</li>
+                    <li class="oculto">2. Lo mucho que me apoyas.</li>
+                    <li class="oculto">3. Tus ojitos.</li>
+                    <li class="oculto">4. Tu forma de ser conmigo.</li>
+                </ul>
+                <button id="btn-revelar" class="btn-pequeno">Ver siguiente...</button>
+
+                <h3>Nuestros momentos:</h3>
+                <div class="galeria">
+                    <!-- Para agregar tus fotos, sube tus imágenes a GitHub y pon el nombre del archivo en src. Ejemplo: src="nuestra-foto.jpg" -->
+                    <img src="https://via.placeholder.com/400x300?text=Sube+tu+foto+aqui" alt="Foto 1">
+                    <img src="https://via.placeholder.com/400x300?text=Sube+tu+foto+aqui" alt="Foto 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CÓDIGO INTERACTIVO (JavaScript) -->
+    <script>
+        const btnNo = document.getElementById('btn-no');
+        const btnSi = document.getElementById('btn-si');
+        const pantallaInicial = document.getElementById('pantalla-inicial');
+        const pantallaCarta = document.getElementById('pantalla-carta');
+        const btnRevelar = document.getElementById('btn-revelar');
+        const itemsCosas = document.querySelectorAll('.lista-cosas li');
+
+        // Los mensajes que saldrán cuando le dé a "No"
+        const mensajesNo = [
+            "¿Segura? 🥺",
+            "Piénsalo bien...",
+            "¡Ándale di que sí!",
+            "Me vas a hacer llorar 😭",
+            "No puedes decir que no"
+        ];
+        let contadorNo = 0;
+
+        btnNo.addEventListener('click', () => {
+            if (contadorNo < mensajesNo.length) {
+                // Cambia el texto del botón NO
+                btnNo.textContent = mensajesNo[contadorNo];
+                
+                // Hace el botón SÍ más grande cada vez que presiona NO
+                let tamañoActual = parseFloat(window.getComputedStyle(btnSi).fontSize);
+                btnSi.style.fontSize = (tamañoActual + 6) + 'px';
+                contadorNo++;
+            } else {
+                // Cuando se acaban los mensajes, el botón se deshabilita
+                btnNo.disabled = true;
+            }
+        });
+
+        // Cuando le da a "Sí", ocultar inicio y mostrar carta
+        btnSi.addEventListener('click', () => {
+            pantallaInicial.classList.add('oculto');
+            pantallaCarta.classList.remove('oculto');
+        });
+
+        // Revelar las "cosas que me gustan" una por una
+        let cosasMostradas = 0;
+        btnRevelar.addEventListener('click', () => {
+            if (cosasMostradas < itemsCosas.length) {
+                itemsCosas[cosasMostradas].classList.remove('oculto');
+                cosasMostradas++;
+            }
+            if (cosasMostradas === itemsCosas.length) {
+                btnRevelar.style.display = 'none'; // Oculta el botón al terminar
+            }
+        });
+    </script>
 </body>
 </html>
