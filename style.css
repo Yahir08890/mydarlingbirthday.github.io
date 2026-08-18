@@ -374,3 +374,83 @@ button {
 .btn-control:hover {
     background-color: #fcd5ce;
 }
+/* =========================================
+   ESTILOS ADICIONALES (Buzón y Controles)
+========================================= */
+
+/* Contenedor de la lista de cartas en el buzón */
+.buzon-contenedor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lista-cartas-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Estilo de cada botón de carta en la lista */
+.btn-carta-item {
+    background: #fff0f3;
+    color: #4a4a4a;
+    border: 1px solid #ffd1dc;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.btn-carta-item:hover {
+    background: #ffe3e8;
+    transform: scale(1.02);
+}
+
+/* Etiqueta de "Nueva" en cada cartita */
+.etiqueta-leida {
+    background-color: #ffb5a7;
+    color: white;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+/* Botón interno para regresar de una carta al menú del buzón */
+.btn-volver-buzon {
+    background: none;
+    border: none;
+    color: #d81159;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.btn-volver-buzon:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes de controles de audio y tiempo */
+.controles-audio {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.tiempo-info {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 6px;
+    text-align: center;
+}
