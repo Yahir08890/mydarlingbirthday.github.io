@@ -28,44 +28,127 @@
             <button class="btn-menu" id="ir-cancion">🎵 Canciones <span class="badge-nuevo">Nuevo</span></button>
             <button class="btn-menu" id="ir-fotos">📸 Fotos Juntos <span class="badge-nuevo">Nuevo</span></button>
             <button class="btn-menu" id="ir-poema">Poema</button>
-            <button class="btn-menu" id="ir-buzon">💌 Buzón de Cartitas <span class="badge-notif">2</span></button>
+            <button class="btn-menu" id="ir-buzon">💌 Buzón de Cartitas <span class="badge-notif">3</span></button>
         </div>
     </div>
 
-    <!-- SECCIÓN 1: MENÚ DE CANCIONES (Listado) -->
+    <!-- SECCIÓN 1: MENÚ DE CANCIONES (5 Ejemplos) -->
     <div class="contenedor-seccion oculto" id="seccion-cancion">
         <button class="btn-volver" id="volver-menu-1">⬅ Volver al Menú</button>
         
+        <!-- Listado principal de canciones -->
         <div id="canciones-lista" class="buzon-contenedor">
             <h2>Nuestras Canciones 🎶</h2>
             <p>Elige una canción para ver su letra y escucharla 🎧</p>
             
             <div class="lista-cartas-botones">
-                <button class="btn-carta-item" onclick="abrirCancion('reproductor-DannyLux')">
-                    <span>🎵 Nos pertenecemos - DannyLux</span>
+                <button class="btn-carta-item" onclick="abrirCancion('rep-1', 'audio1')">
+                    <span>🎵 Canción 1 - Artista 1</span>
                     <span class="etiqueta-leida">Escuchar</span>
                 </button>
-                <!-- Aquí puedes agregar más canciones fácilmente en el futuro -->
+                <button class="btn-carta-item" onclick="abrirCancion('rep-2', 'audio2')">
+                    <span>🎵 Canción 2 - Artista 2</span>
+                    <span class="etiqueta-leida">Escuchar</span>
+                </button>
+                <button class="btn-carta-item" onclick="abrirCancion('rep-3', 'audio3')">
+                    <span>🎵 Canción 3 - Artista 3</span>
+                    <span class="etiqueta-leida">Escuchar</span>
+                </button>
+                <button class="btn-carta-item" onclick="abrirCancion('rep-4', 'audio4')">
+                    <span>🎵 Canción 4 - Artista 4</span>
+                    <span class="etiqueta-leida">Escuchar</span>
+                </button>
+                <button class="btn-carta-item" onclick="abrirCancion('rep-5', 'audio5')">
+                    <span>🎵 Canción 5 - Artista 5</span>
+                    <span class="etiqueta-leida">Escuchar</span>
+                </button>
             </div>
         </div>
 
-        <!-- Vista del Reproductor de DannyLux (Oculto al inicio) -->
-        <div id="reproductor-DannyLux" class="carta-estilo oculto" style="width: 100%; max-width: 500px; margin: 0 auto;">
-            <button class="btn-volver-buzon" onclick="cerrarCancion()">⬅ Volver a la Lista</button>
-            
-            <div class="reproductor-card" style="box-shadow: none; background: transparent; padding: 0;">
-                <h3>Nos pertenecemos - DannyLux 💗</h3>
-                <div class="controles-audio" style="margin: 15px 0;">
-                    <button class="btn-control" id="btn-retroceder">⏪ -5s</button>
-                    <button id="btn-play-pause" class="btn-control">▶ Play</button>
-                    <button class="btn-control" id="btn-adelantar">+5s ⏩</button>
-                </div>
-                <div class="tiempo-info" style="margin-bottom: 15px;">
-                    <span id="tiempo-actual">0:00</span> / <span id="duracion-total">0:00</span>
-                </div>
+        <!-- REPRODUCTOR 1 -->
+        <div id="rep-1" class="carta-estilo oculto">
+            <button class="btn-volver-buzon" onclick="cerrarCancion('audio1')">⬅ Volver a la Lista</button>
+            <h3>Canción 1 - Artista 1 💗</h3>
+            <div class="controles-audio" style="margin: 15px 0;">
+                <button class="btn-control" onclick="retroceder('audio1')">⏪ -5s</button>
+                <button class="btn-control" onclick="togglePlay('audio1', this)">▶ Play</button>
+                <button class="btn-control" onclick="adelantar('audio1')">+5s ⏩</button>
             </div>
+            <div class="tiempo-info" style="margin-bottom: 15px;">
+                <span id="tiempo-actual-audio1">0:00</span> / <span id="duracion-audio1">0:00</span>
+            </div>
+            <div class="letras-scroll" id="letras-audio1">
+                <p class="linea-letra">Aquí pones la letra de la canción 1...</p>
+                <p class="linea-letra">Línea dos de ejemplo...</p>
+            </div>
+        </div>
 
-            <div class="letras-scroll" id="letras-scroll" style="max-height: 250px; overflow-y: auto;"></div>
+        <!-- REPRODUCTOR 2 -->
+        <div id="rep-2" class="carta-estilo oculto">
+            <button class="btn-volver-buzon" onclick="cerrarCancion('audio2')">⬅ Volver a la Lista</button>
+            <h3>Canción 2 - Artista 2 💗</h3>
+            <div class="controles-audio" style="margin: 15px 0;">
+                <button class="btn-control" onclick="retroceder('audio2')">⏪ -5s</button>
+                <button class="btn-control" onclick="togglePlay('audio2', this)">▶ Play</button>
+                <button class="btn-control" onclick="adelantar('audio2')">+5s ⏩</button>
+            </div>
+            <div class="tiempo-info" style="margin-bottom: 15px;">
+                <span id="tiempo-actual-audio2">0:00</span> / <span id="duracion-audio2">0:00</span>
+            </div>
+            <div class="letras-scroll" id="letras-audio2">
+                <p class="linea-letra">Letra de la canción 2...</p>
+            </div>
+        </div>
+
+        <!-- REPRODUCTOR 3 -->
+        <div id="rep-3" class="carta-estilo oculto">
+            <button class="btn-volver-buzon" onclick="cerrarCancion('audio3')">⬅ Volver a la Lista</button>
+            <h3>Canción 3 - Artista 3 💗</h3>
+            <div class="controles-audio" style="margin: 15px 0;">
+                <button class="btn-control" onclick="retroceder('audio3')">⏪ -5s</button>
+                <button class="btn-control" onclick="togglePlay('audio3', this)">▶ Play</button>
+                <button class="btn-control" onclick="adelantar('audio3')">+5s ⏩</button>
+            </div>
+            <div class="tiempo-info" style="margin-bottom: 15px;">
+                <span id="tiempo-actual-audio3">0:00</span> / <span id="duracion-audio3">0:00</span>
+            </div>
+            <div class="letras-scroll" id="letras-audio3">
+                <p class="linea-letra">Letra de la canción 3...</p>
+            </div>
+        </div>
+
+        <!-- REPRODUCTOR 4 -->
+        <div id="rep-4" class="carta-estilo oculto">
+            <button class="btn-volver-buzon" onclick="cerrarCancion('audio4')">⬅ Volver a la Lista</button>
+            <h3>Canción 4 - Artista 4 💗</h3>
+            <div class="controles-audio" style="margin: 15px 0;">
+                <button class="btn-control" onclick="retroceder('audio4')">⏪ -5s</button>
+                <button class="btn-control" onclick="togglePlay('audio4', this)">▶ Play</button>
+                <button class="btn-control" onclick="adelantar('audio4')">+5s ⏩</button>
+            </div>
+            <div class="tiempo-info" style="margin-bottom: 15px;">
+                <span id="tiempo-actual-audio4">0:00</span> / <span id="duracion-audio4">0:00</span>
+            </div>
+            <div class="letras-scroll" id="letras-audio4">
+                <p class="linea-letra">Letra de la canción 4...</p>
+            </div>
+        </div>
+
+        <!-- REPRODUCTOR 5 -->
+        <div id="rep-5" class="carta-estilo oculto">
+            <button class="btn-volver-buzon" onclick="cerrarCancion('audio5')">⬅ Volver a la Lista</button>
+            <h3>Canción 5 - Artista 5 💗</h3>
+            <div class="controles-audio" style="margin: 15px 0;">
+                <button class="btn-control" onclick="retroceder('audio5')">⏪ -5s</button>
+                <button class="btn-control" onclick="togglePlay('audio5', this)">▶ Play</button>
+                <button class="btn-control" onclick="adelantar('audio5')">+5s ⏩</button>
+            </div>
+            <div class="tiempo-info" style="margin-bottom: 15px;">
+                <span id="tiempo-actual-audio5">0:00</span> / <span id="duracion-audio5">0:00</span>
+            </div>
+            <div class="letras-scroll" id="letras-audio5">
+                <p class="linea-letra">Letra de la canción 5...</p>
+            </div>
         </div>
     </div>
 
@@ -76,19 +159,19 @@
         
         <div class="galeria-grid">
             <div class="item-galeria">
-                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cjM3djhyZWRrbGlzZjg2enpoN2IzNTE3Y3VvcWd2dXlsNWhmdXF3YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YDB4EF3U6i6IM/giphy.gif" alt="Hércules y Meg">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cjM3djhyZWRrbGlzZjg2enpoN2IzNTE3Y3VvcWd2dXlsNWhmdXF3YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YDB4EF3U6i6IM/giphy.gif" alt="Foto 1">
                 <p class="texto-galeria">Desafiaría a la muerte por ti como Hércules por Meg 😼</p>
             </div>
             <div class="item-galeria">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDBkejVkdjNyZnpoNWoxbWYyeWs3emliYXZtMGVnNzdjd3MxOGNmMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TzoUxq2seGGIw/giphy.gif" alt="WALL-E y Eva">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDBkejVkdjNyZnpoNWoxbWYyeWs3emliYXZtMGVnNzdjd3MxOGNmMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TzoUxq2seGGIw/giphy.gif" alt="Foto 2">
                 <p class="texto-galeria">Te amo con la intensidad con la que WALL-E ama a Eva 💖</p>
             </div>
             <div class="item-galeria">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGJjcHRqem9penFuMDlna3JlNmVnMXN5ZTd6NXloM2ZjaGg3NXRzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tF2MQQ8xef5f2/giphy.gif" alt="Jack y Sally">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGJjcHRqem9penFuMDlna3JlNmVnMXN5ZTd6NXloM2ZjaGg3NXRzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tF2MQQ8xef5f2" alt="Foto 3">
                 <p class="texto-galeria">Destinados a estar juntos como Jack y Sally 💗</p>
             </div>
             <div class="item-galeria">
-                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3d25ndmYxcXJ2aXAxbjAxdDNxb2ticzRzNWF3cjZvcGhnZGRyNXpxaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3ornjX5H61CKdFonks/giphy.gif" alt="Snoopy y Woodstock">
+                <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3d25ndmYxcXJ2aXAxbjAxdDNxb2ticzRzNWF3cjZvcGhnZGRyNXpxaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3ornjX5H61CKdFonks" alt="Foto 4">
                 <p class="texto-galeria">Quiero estar contigo como Snoopy con Woodstock 💗</p>
             </div>
         </div>
@@ -108,7 +191,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN 4: BUZÓN INTERACTIVO -->
+    <!-- SECCIÓN 4: BUZÓN INTERACTIVO (Con 3 cartas de ejemplo) -->
     <div class="contenedor-seccion oculto" id="seccion-buzon">
         <button class="btn-volver" id="volver-menu-4">⬅ Volver al Menú</button>
         
@@ -125,6 +208,11 @@
                     <span>💌 Si algún día no te sientes bien.</span>
                     <span class="etiqueta-leida">Nueva</span>
                 </button>
+                <!-- NUEVA CARTA DE EJEMPLO -->
+                <button class="btn-carta-item" onclick="abrirCarta('carta3')">
+                    <span>💌 Una cartita extra de ejemplo</span>
+                    <span class="etiqueta-leida">Nueva</span>
+                </button>
             </div>
         </div>
 
@@ -134,20 +222,32 @@
             <p><strong>Fecha:</strong> Especial</p>
             <hr style="border: 0; border-top: 1px solid #ffd1dc; margin: 10px 0;">
             <p>Amooooor, terminé cambiando esto para que lo puedas ver cuando quieras jskjs, intentaré ponerle cosas nuevas continuamente así que siéntete libre de hacer lo que sea aunque no hay mucho jaja. P.D. Eres lo mejor que me ha pasado en la vida entera ti amo muuuchisisisisimos muchos jsjsjs 💖</p>
-            <p>Te amo muchísimo.</p>
         </div>
 
         <div id="carta2" class="carta-estilo oculto">
             <button class="btn-volver-buzon" onclick="cerrarCarta()">⬅ Volver al Buzón</button>
             <h3>Para cuando estés triste 😼</h3>
-            <p><strong>Fecha:</strong> Hoy supongo jakjakjka</p>
+            <p><strong>Fecha:</strong> Hoy supongo</p>
             <hr style="border: 0; border-top: 1px solid #ffd1dc; margin: 10px 0;">
             <p>Si lees esto y no te sientes muy bien, sabes que puedes contar conmigo siempre, si quieres hablarlo lo hablamos, si quieres estar tranquila está bien pero pase lo que pase recuerda que siempre voy a estar para ti en las buenas y en las malas ❤️‍🩹</p>
         </div>
+
+        <!-- CONTENIDO DE LA NUEVA CARTA 3 -->
+        <div id="carta3" class="carta-estilo oculto">
+            <button class="btn-volver-buzon" onclick="cerrarCarta()">⬅ Volver al Buzón</button>
+            <h3>Tercera cartita de ejemplo ✨</h3>
+            <p><strong>Fecha:</strong> Cualquier día</p>
+            <hr style="border: 0; border-top: 1px solid #ffd1dc; margin: 10px 0;">
+            <p>Aquí puedes escribir lo que quieras, duplicar este bloque en el HTML y agregar cuantas cartas se te antojen siguiendo exactamente la misma estructura. ¡Te amo mucho! 💖</p>
+        </div>
     </div>
 
-    <!-- Audio oculto -->
-    <audio id="musicaFondo" src="DannyLux - Nos Pertenecemos [Lyric Video].mp3"></audio>
+    <!-- Audios independientes para cada canción -->
+    <audio id="audio1" src="cancion1.mp3"></audio>
+    <audio id="audio2" src="cancion2.mp3"></audio>
+    <audio id="audio3" src="cancion3.mp3"></audio>
+    <audio id="audio4" src="cancion4.mp3"></audio>
+    <audio id="audio5" src="cancion5.mp3"></audio>
 
     <!-- CÓDIGO JAVASCRIPT -->
     <script>
@@ -166,15 +266,6 @@
         const btnIrPoema = document.getElementById('ir-poema');
         const btnIrBuzon = document.getElementById('ir-buzon');
 
-        const btnPlayPause = document.getElementById('btn-play-pause');
-        const btnAdelantar = document.getElementById('btn-adelantar');
-        const btnRetroceder = document.getElementById('btn-retroceder');
-        const tiempoActualSpan = document.getElementById('tiempo-actual');
-        const duracionTotalSpan = document.getElementById('duracion-total');
-        
-        const musica = document.getElementById('musicaFondo');
-        const letrasScroll = document.getElementById('letras-scroll');
-
         // Botones generales de volver al menú principal
         document.querySelectorAll('.btn-volver').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -183,10 +274,11 @@
                 seccionPoema.classList.add('oculto');
                 seccionBuzon.classList.add('oculto');
                 pantallaMenu.classList.remove('oculto');
-                // Opcional: pausar música al salir de la sección
-                if(!musica.paused) {
-                    musica.pause();
-                    btnPlayPause.textContent = "▶ Play";
+                
+                // Pausar todos los audios al salir al menú
+                for (let i = 1; i <= 5; i++) {
+                    let aud = document.getElementById('audio' + i);
+                    if(aud) aud.pause();
                 }
             });
         });
@@ -216,7 +308,7 @@
         btnIrCancion.addEventListener('click', () => {
             pantallaMenu.classList.add('oculto');
             seccionCancion.classList.remove('oculto');
-            cerrarCancion(); // Asegurar que muestre la lista primero
+            cerrarCancionAll();
         });
 
         btnIrFotos.addEventListener('click', () => {
@@ -236,124 +328,86 @@
             if(notif) notif.style.display = 'none';
         });
 
-        // Funciones para el Buzón de Múltiples Cartas
+        // Funciones para el Buzón de Cartas
         function abrirCarta(idCarta) {
             document.getElementById('buzon-lista').classList.add('oculto');
+            document.getElementById('carta1').classList.add('oculto');
+            document.getElementById('carta2').classList.add('oculto');
+            document.getElementById('carta3').classList.add('oculto');
             document.getElementById(idCarta).classList.remove('oculto');
         }
 
         function cerrarCarta() {
             document.getElementById('carta1').classList.add('oculto');
             document.getElementById('carta2').classList.add('oculto');
+            document.getElementById('carta3').classList.add('oculto');
             document.getElementById('buzon-lista').classList.remove('oculto');
         }
 
-        // Funciones para el listado de Canciones
-        function abrirCancion(idReproductor) {
+        // Funciones para las Canciones
+        function abrirCancion(idRep, idAudio) {
             document.getElementById('canciones-lista').classList.add('oculto');
-            document.getElementById(idReproductor).classList.remove('oculto');
-            iniciarLetrasSiNoEstan();
+            cerrarCancionAll();
+            document.getElementById(idRep).classList.remove('oculto');
         }
 
-        function cerrarCancion() {
-            document.getElementById('reproductor-DannyLux').classList.add('oculto');
+        function cerrarCancionAll() {
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById('rep-' + i).classList.add('oculto');
+                let aud = document.getElementById('audio' + i);
+                if(aud) aud.pause();
+            }
             document.getElementById('canciones-lista').classList.remove('oculto');
         }
 
-        // Controles de Música
-        btnPlayPause.addEventListener('click', () => {
-            if (musica.paused) {
-                musica.play();
-                btnPlayPause.textContent = "⏸ Pausa";
+        function cerrarCancion(idAudio) {
+            let aud = document.getElementById(idAudio);
+            if(aud) aud.pause();
+            cerrarCancionAll();
+        }
+
+        // Controles de Audio Independientes
+        function togglePlay(idAudio, btnElement) {
+            let aud = document.getElementById(idAudio);
+            if (aud.paused) {
+                aud.play();
+                btnElement.textContent = "⏸ Pausa";
             } else {
-                musica.pause();
-                btnPlayPause.textContent = "▶ Play";
+                aud.pause();
+                btnElement.textContent = "▶ Play";
             }
-        });
+        }
 
-        btnAdelantar.addEventListener('click', () => {
-            musica.currentTime = Math.min(musica.duration, musica.currentTime + 5);
-        });
+        function adelantar(idAudio) {
+            let aud = document.getElementById(idAudio);
+            aud.currentTime = Math.min(aud.duration, aud.currentTime + 5);
+        }
 
-        btnRetroceder.addEventListener('click', () => {
-            musica.currentTime = Math.max(0, musica.currentTime - 5);
-        });
+        function retroceder(idAudio) {
+            let aud = document.getElementById(idAudio);
+            aud.currentTime = Math.max(0, aud.currentTime - 5);
+        }
 
-        musica.addEventListener('loadedmetadata', () => {
-            duracionTotalSpan.textContent = formatearTiempo(musica.duration);
-        });
+        // Configurar tiempos de todos los audios automáticamente
+        for (let i = 1; i <= 5; i++) {
+            let aud = document.getElementById('audio' + i);
+            let tAct = document.getElementById('tiempo-actual-audio' + i);
+            let tTot = document.getElementById('duracion-audio' + i);
 
-        musica.addEventListener('timeupdate', () => {
-            tiempoActualSpan.textContent = formatearTiempo(musica.currentTime);
-        });
+            if (aud) {
+                aud.addEventListener('loadedmetadata', () => {
+                    if(tTot) tTot.textContent = formatearTiempo(aud.duration);
+                });
+                aud.addEventListener('timeupdate', () => {
+                    if(tAct) tAct.textContent = formatearTiempo(aud.currentTime);
+                });
+            }
+        }
 
         function formatearTiempo(segundos) {
             let mins = Math.floor(segundos / 60);
             let secs = Math.floor(segundos % 60);
             return mins + ":" + (secs < 10 ? "0" : "") + secs;
-        }
-
-        // Base de datos de letras (DannyLux)
-        const letrasCancion = [
-            { tiempo: 0, texto: "🎶" },
-            { tiempo: 35, texto: "Eres mía" },
-            { tiempo: 40, texto: "Y nos pertenecemos" },
-            { tiempo: 46, texto: "Sí, nos pertenecemos" },
-            { tiempo: 53, texto: "Por la eternidad" },
-            { tiempo: 62, texto: "Eres mía" },
-            { tiempo: 67, texto: "Y esos labios me aceleran" },
-            { tiempo: 74, texto: "Por qué son todos pa' mi" },
-            { tiempo: 81, texto: "Por la eternidad" },
-            { tiempo: 90, texto: "Eres mía" },
-            { tiempo: 93, texto: "Mía bebé" },
-            { tiempo: 97, texto: "Y tú fiel siempre serás" },
-            { tiempo: 104, texto: "Te lo juro" },
-            { tiempo: 108, texto: "Que yo si te amo" },
-            { tiempo: 111, texto: "Y siempre, siempre te amaré" },
-            { tiempo: 145, texto: "Eres mía" },
-            { tiempo: 148, texto: "Y nos pertenecemos" },
-            { tiempo: 156, texto: "Sí, nos pertenecemos" },
-            { tiempo: 163, texto: "Por la eternidad." }
-        ];
-
-        let letrasGeneradas = false;
-        function iniciarLetrasSiNoEstan() {
-            if (letrasGeneradas) return;
-            letrasGeneradas = true;
-
-            letrasCancion.forEach((linea, index) => {
-                let p = document.createElement('p');
-                p.classList.add('linea-letra');
-                p.id = 'linea-' + index;
-                p.innerText = linea.texto;
-                letrasScroll.appendChild(p);
-            });
-
-            musica.addEventListener('timeupdate', () => {
-                let tiempoActual = musica.currentTime;
-                for (let i = 0; i < letrasCancion.length; i++) {
-                    let tiempoLinea = letrasCancion[i].tiempo;
-                    let tiempoSiguiente = (i < letrasCancion.length - 1) ? letrasCancion[i+1].tiempo : 9999;
-
-                    if (tiempoActual >= tiempoLinea && tiempoActual < tiempoSiguiente) {
-                        resaltarLinea(i);
-                        break;
-                    }
-                }
-            });
-        }
-
-        let indiceActual = -1;
-        function resaltarLinea(index) {
-            if (indiceActual === index) return;
-            indiceActual = index;
-
-            document.querySelectorAll('.linea-letra').forEach(el => el.classList.remove('activa'));
-            let lineaActiva = document.getElementById('linea-' + index);
-            if (lineaActiva) {
-                lineaActiva.classList.add('activa');
-                lineaActiva.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
         }
 
         function crearLluviaCorazones() {
