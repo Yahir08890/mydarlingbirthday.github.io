@@ -502,3 +502,29 @@ button {
     box-sizing: border-box;
     padding: 20px;
 }
+/* Fondo y estilo para la tarjeta del reproductor de cada canción */
+.carta-estilo {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Estilo para las líneas de la letra */
+.linea-letra {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+/* Línea de la canción que va sonando (activa) */
+.linea-letra.activa {
+    color: #ff4b6e;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-shadow: 0 0 5px rgba(255, 75, 110, 0.2);
+}
