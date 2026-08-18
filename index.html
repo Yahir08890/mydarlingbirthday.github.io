@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <!-- PANTALLA INICIAL (La de la pregunta de bienvenida) -->
+    <!-- PANTALLA INICIAL -->
     <div class="contenedor" id="pantalla-inicial">
         <h1>Hola mi amor 💗</h1>
         <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTBpM2x3a256OHVxanVtOXgzNTJrZ3FvdnJoejBpd2VyMHRzbWxrdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Zl7u48zLVFgLpRwq6f/giphy.gif" alt="Abrazo" class="gif-portada">
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <!-- MENÚ PRINCIPAL (Donde eliges qué sección ver) -->
+    <!-- MENÚ PRINCIPAL -->
     <div class="contenedor oculto" id="pantalla-menu">
         <h2>Nuestro Espacio 💖</h2>
         <p>Elige lo que quieres ver hoy:</p>
@@ -28,29 +28,31 @@
             <button class="btn-menu" id="ir-cancion">🎵 Nuestra Canción <span class="badge-nuevo">Nuevo</span></button>
             <button class="btn-menu" id="ir-fotos">📸 Fotos Juntos <span class="badge-nuevo">Nuevo</span></button>
             <button class="btn-menu" id="ir-poema">📜 Poema</button>
-            <button class="btn-menu" id="ir-buzon">💌 Cartita / Buzón <span class="badge-notif">1</span></button>
+            <!-- Aquí el número 2 indica cuántas cartas hay sin leer -->
+            <button class="btn-menu" id="ir-buzon">💌 Buzón de Cartitas <span class="badge-notif">2</span></button>
         </div>
     </div>
 
-    <!-- SECCIÓN 1: REPRODUCTOR DE MÚSICA Y LETRAS -->
+    <!-- SECCIÓN 1: REPRODUCTOR DE MÚSICA Y LETRAS (Con adelantar/atrasar 5s) -->
     <div class="contenedor-seccion oculto" id="seccion-cancion">
         <button class="btn-volver" id="volver-menu-1">⬅ Volver al Menú</button>
         
         <div class="reproductor-card">
             <h3>Beso - Jósean Log 🎶</h3>
-            <!-- Controles manuales -->
             <div class="controles-audio">
+                <button class="btn-control" id="btn-retroceder">⏪ -5s</button>
                 <button id="btn-play-pause" class="btn-control">▶ Play</button>
+                <button class="btn-control" id="btn-adelantar">+5s ⏩</button>
+            </div>
+            <div class="tiempo-info">
                 <span id="tiempo-actual">0:00</span> / <span id="duracion-total">0:00</span>
             </div>
         </div>
 
-        <div class="letras-scroll" id="letras-scroll">
-            <!-- JavaScript inyectará las letras aquí -->
-        </div>
+        <div class="letras-scroll" id="letras-scroll"></div>
     </div>
 
-    <!-- SECCIÓN 2: FOTOS JUNTOS (Galería) -->
+    <!-- SECCIÓN 2: FOTOS JUNTOS -->
     <div class="contenedor-seccion oculto" id="seccion-fotos">
         <button class="btn-volver" id="volver-menu-2">⬅ Volver al Menú</button>
         <h2>Nuestros Momentos 📸</h2>
@@ -89,21 +91,50 @@
         </div>
     </div>
 
-    <!-- SECCIÓN 4: BUZÓN / CARTITA -->
+    <!-- SECCIÓN 4: BUZÓN INTERACTIVO (Menú de Cartitas) -->
     <div class="contenedor-seccion oculto" id="seccion-buzon">
         <button class="btn-volver" id="volver-menu-4">⬅ Volver al Menú</button>
-        <div class="carta-estilo">
+        
+        <!-- Vista 1: La lista/menú de cartas -->
+        <div id="buzon-lista" class="buzon-contenedor">
             <h2>Buzón de Cartitas 💌</h2>
-            <p><strong>De:</strong> Tu novio que te ama</p>
-            <hr style="border: 0; border-top: 1px solid #ffd1dc; margin: 15px 0;">
-            <p>Mi amor, hice este espacio para que puedas entrar cuando quieras a escuchar nuestra canción, ver fotos o leer cositas lindas.</p>
-            <p>Gracias por estar siempre conmigo, por tu apoyo y por cada risa. Eres lo mejor que me ha pasado en la vida entera jsjsjs 💖</p>
+            <p>Aquí guardé cartitas especiales para ti. ¡Haz clic en una para leerla!</p>
+            
+            <div class="lista-cartas-botones">
+                <button class="btn-carta-item" onclick="abrirCarta('carta1')">
+                    <span>💌 Carta del primer día / Aniversario</span>
+                    <span class="etiqueta-leida">Nueva</span>
+                </button>
+                <button class="btn-carta-item" onclick="abrirCarta('carta2')">
+                    <span>💌 Si un día tienes un mal día...</span>
+                    <span class="etiqueta-leida">Nueva</span>
+                </button>
+                <!-- Puedes agregar más botones de cartas aquí fácilmente -->
+            </div>
+        </div>
+
+        <!-- Vista 2: El contenido de la Carta 1 (Oculto al inicio) -->
+        <div id="carta1" class="carta-estilo oculto">
+            <button class="btn-volver-buzon" onclick="cerrarCarta()">⬅ Volver al Buzón</button>
+            <h3>Carta de Aniversario 💖</h3>
+            <p><strong>Fecha:</strong> Especial</p>
+            <hr style="border: 0; border-top: 1px solid #ffd1dc; margin: 10px 0;">
+            <p>Mi amor, hice este espacio para que puedas entrar cuando quieras. Gracias por estar siempre conmigo, por tu apoyo y por cada risa. Eres lo mejor que me ha pasado en la vida entera jsjsjs 💖</p>
             <p>Te amo muchísimo.</p>
+        </div>
+
+        <!-- Vista 3: El contenido de la Carta 2 (Oculto al inicio) -->
+        <div id="carta2" class="carta-estilo oculto">
+            <button class="btn-volver-buzon" onclick="cerrarCarta()">⬅ Volver al Buzón</button>
+            <h3>Para cuando estés triste... 🥺</h3>
+            <p><strong>Fecha:</strong> Siempre vigente</p>
+            <hr style="border: 0; border-top: 1px solid #ffd1dc; margin: 10px 0;">
+            <p>Si estás leyendo esto y tuviste un día pesadito, recuerda lo mucho que vales. Estoy súper orgulloso de ti y de todo lo que haces. Te amo pase lo que pase y siempre voy a estar para darte un abrazo bien fuerte. ❤️‍🩹</p>
         </div>
     </div>
 
     <!-- Audio oculto -->
-    <audio id="musicaFondo" src="DannyLux - Nos Pertenecemos [Lyric Video].mp3"></audio>
+    <audio id="musicaFondo" src="Jósean Log - Beso (Lyric Video).mp3"></audio>
 
     <!-- CÓDIGO JAVASCRIPT -->
     <script>
@@ -123,10 +154,15 @@
         const btnIrBuzon = document.getElementById('ir-buzon');
 
         const btnPlayPause = document.getElementById('btn-play-pause');
+        const btnAdelantar = document.getElementById('btn-adelantar');
+        const btnRetroceder = document.getElementById('btn-retroceder');
+        const tiempoActualSpan = document.getElementById('tiempo-actual');
+        const duracionTotalSpan = document.getElementById('duracion-total');
+        
         const musica = document.getElementById('musicaFondo');
         const letrasScroll = document.getElementById('letras-scroll');
 
-        // Botones de regreso al menú
+        // Botones generales de volver al menú principal
         document.querySelectorAll('.btn-volver').forEach(btn => {
             btn.addEventListener('click', () => {
                 seccionCancion.classList.add('oculto');
@@ -137,7 +173,7 @@
             });
         });
 
-        // Interacción botón No inicial
+        // Interacción botón No
         const mensajesNo = ["¿Segura? 🥺", "Piénsalo bien...", "Ándale di que sí", "segurisisisisima segura?😿", "Me vas a hacer llorar 😭", "No puedes decir que no jejeje 😇"];
         let contadorNo = 0;
         btnNo.addEventListener('click', () => {
@@ -151,14 +187,14 @@
             }
         });
 
-        // Entrar al menú principal
+        // Entrar al menú
         btnSi.addEventListener('click', () => {
             pantallaInicial.classList.add('oculto');
             pantallaMenu.classList.remove('oculto');
             crearLluviaCorazones();
         });
 
-        // Navegación del menú
+        // Navegación del menú principal
         btnIrCancion.addEventListener('click', () => {
             pantallaMenu.classList.add('oculto');
             seccionCancion.classList.remove('oculto');
@@ -178,12 +214,24 @@
         btnIrBuzon.addEventListener('click', () => {
             pantallaMenu.classList.add('oculto');
             seccionBuzon.classList.remove('oculto');
-            // Al abrir el buzón, quitamos la notificación roja simulando que ya se leyó
+            // Quitar insignia de notificación roja global al entrar al buzón
             const notif = document.querySelector('.badge-notif');
             if(notif) notif.style.display = 'none';
         });
 
-        // Control Manual de Play/Pausa de Música
+        // Funciones para el Buzón de Múltiples Cartas
+        function abrirCarta(idCarta) {
+            document.getElementById('buzon-lista').classList.add('oculto');
+            document.getElementById(idCarta).classList.remove('oculto');
+        }
+
+        function cerrarCarta() {
+            document.getElementById('carta1').classList.add('oculto');
+            document.getElementById('carta2').classList.add('oculto');
+            document.getElementById('buzon-lista').classList.remove('oculto');
+        }
+
+        // Controles de Música (Play/Pausa, Adelantar/Atrasar 5s)
         btnPlayPause.addEventListener('click', () => {
             if (musica.paused) {
                 musica.play();
@@ -194,44 +242,58 @@
             }
         });
 
-        // Actualizar tiempos y letras
+        btnAdelantar.addEventListener('click', () => {
+            musica.currentTime = Math.min(musica.duration, musica.currentTime + 5);
+        });
+
+        btnRetroceder.addEventListener('click', () => {
+            musica.currentTime = Math.max(0, musica.currentTime - 5);
+        });
+
+        // Formato de tiempo para el reproductor
+        musica.addEventListener('loadedmetadata', () => {
+            duracionTotalSpan.textContent = formatearTiempo(musica.duration);
+        });
+
+        musica.addEventListener('timeupdate', () => {
+            tiempoActualSpan.textContent = formatearTiempo(musica.currentTime);
+        });
+
+        function formatearTiempo(segundos) {
+            let mins = Math.floor(segundos / 60);
+            let secs = Math.floor(segundos % 60);
+            return mins + ":" + (secs < 10 ? "0" : "") + secs;
+        }
+
+        // Base de datos de letras
         const letrasCancion = [
-            { tiempo: 0, texto: "🎶" },
-            { tiempo: 35, texto: "Eres mía" },
-            { tiempo: 40, texto: "Y nos pertenecemos" },
-            { tiempo: 46, texto: "Sí, nos pertenecemos" },
-            { tiempo: 53, texto: "Por la eternidad" },
-            { tiempo: 62, texto: "Eres mía" },
-            { tiempo: 67, texto: "Y esos labios me aceleran" },
-            { tiempo: 74, texto: "Por qué son todos pa' mi" },
-            { tiempo: 81, texto: "Por la eternidad" },
-            { tiempo: 90, texto: "Eres mía" },
-            { tiempo: 93, texto: "Mía bebé" },
-            { tiempo: 97, texto: "Y tú fiel siempre serás" },
-            { tiempo: 104, texto: "Te lo juro" },
-            { tiempo: 108, texto: "Que yo si te amo" },
-            { tiempo: 111, texto: "Y siempre, siempre te amaré" },
-            { tiempo: 145, texto: "Eres mía" },
-            { tiempo: 148, texto: "Y nos pertenecemos" },
-            { tiempo: 156, texto: "Sí, nos pertenecemos" },
-            { tiempo: 163, texto: "Por la eternidad." },
-    // =========================================
-           // { tiempo: 117, texto: "" },
-          //  { tiempo: 121, texto: "" },
-          //  { tiempo: 126, texto: "" },
-          //  { tiempo: 129, texto: "" },
-          //  { tiempo: 132, texto: "" },
-          //  { tiempo: 136, texto: "" },
-          //  { tiempo: 141, texto: "" },
-          //  { tiempo: 145, texto: "" },
-          //  { tiempo: 151, texto: "" },
-          //  { tiempo: 156, texto: "" },
-          //  { tiempo: 165, texto: "" },
-          //  { tiempo: 168, texto: "" },
-          //  { tiempo: 174, texto: "" },
-          //  { tiempo: 180, texto: "" },
-          //  { tiempo: 196, texto: "" },
-           // { tiempo: 200, texto: "" }
+            { tiempo: 0, texto: "🎶 (Música) 🎶" },
+            { tiempo: 12, texto: "Beso, tan simple como eso" },
+            { tiempo: 16, texto: "Tan simple como un beso" },
+            { tiempo: 19, texto: "Todo puede cambiar" },
+            { tiempo: 24, texto: "Beso, tan simple como eso" },
+            { tiempo: 28, texto: "Tan simple como un beso" },
+            { tiempo: 31, texto: "Todo puede arreglar" },
+            { tiempo: 36, texto: "Bésame, junta tus labios con los míos otra vez" },
+            { tiempo: 42, texto: "Que quiero amarte y decirte lo que sé" },
+            { tiempo: 45, texto: "Pero no encuentro las palabras, bésame" },
+            { tiempo: 48, texto: "Bésame, junta tus labios con los míos otra vez" },
+            { tiempo: 54, texto: "Que para enamorarte como lo hice ayer" },
+            { tiempo: 57, texto: "Hay que empezar por acercarse, bésame" },
+            { tiempo: 63, texto: "Beso, fragmento de universo" },
+            { tiempo: 67, texto: "Ritual frente a lo adverso" },
+            { tiempo: 70, texto: "Capricho natural" },
+            { tiempo: 75, texto: "Beso, lenguaje tan diverso" },
+            { tiempo: 79, texto: "Camino sin regreso" },
+            { tiempo: 82, texto: "Elixir inmortal" },
+            { tiempo: 87, texto: "Bésame, junta tus labios con los míos otra vez" },
+            { tiempo: 93, texto: "Que quiero amarte y decirte lo que sé" },
+            { tiempo: 96, texto: "Pero no encuentro las palabras, bésame" },
+            { tiempo: 100, texto: "Bésame, junta tus labios con los míos otra vez" },
+            { tiempo: 105, texto: "Que para enamorarte como lo hice ayer" },
+            { tiempo: 108, texto: "Hay que empezar por acercarse, bésame" },
+            { tiempo: 115, texto: "(Bésame)" },
+            { tiempo: 120, texto: "💖 ¡Te amo muchísimo, mi amor! 💖" }
         ];
 
         let letrasGeneradas = false;
@@ -249,8 +311,6 @@
 
             musica.addEventListener('timeupdate', () => {
                 let tiempoActual = musica.currentTime;
-                
-                // Actualizar textos de tiempo en pantalla si gustas
                 for (let i = 0; i < letrasCancion.length; i++) {
                     let tiempoLinea = letrasCancion[i].tiempo;
                     let tiempoSiguiente = (i < letrasCancion.length - 1) ? letrasCancion[i+1].tiempo : 9999;
@@ -277,7 +337,7 @@
         }
 
         function crearLluviaCorazones() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 setTimeout(() => {
                     const corazon = document.createElement('div');
                     corazon.classList.add('corazon');
