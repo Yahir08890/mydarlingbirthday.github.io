@@ -25,30 +25,48 @@
         <p>Elige lo que quieres ver hoy:</p>
         
         <div class="menu-botones">
-            <button class="btn-menu" id="ir-cancion">Canciones <span class="badge-nuevo">Nuevo</span></button>
-            <button class="btn-menu" id="ir-fotos">Fotos Juntos <span class="badge-nuevo">Nuevo</span></button>
+            <button class="btn-menu" id="ir-cancion">🎵 Canciones <span class="badge-nuevo">Nuevo</span></button>
+            <button class="btn-menu" id="ir-fotos">📸 Fotos Juntos <span class="badge-nuevo">Nuevo</span></button>
             <button class="btn-menu" id="ir-poema">Poema</button>
             <button class="btn-menu" id="ir-buzon">💌 Buzón de Cartitas <span class="badge-notif">2</span></button>
         </div>
     </div>
 
-    <!-- SECCIÓN 1: REPRODUCTOR DE MÚSICA Y LETRAS -->
+    <!-- SECCIÓN 1: MENÚ DE CANCIONES (Listado) -->
     <div class="contenedor-seccion oculto" id="seccion-cancion">
         <button class="btn-volver" id="volver-menu-1">⬅ Volver al Menú</button>
         
-        <div class="reproductor-card">
-            <h3>Nos pertenecemos - DannyLux 💗</h3>
-            <div class="controles-audio">
-                <button class="btn-control" id="btn-retroceder">⏪ -5s</button>
-                <button id="btn-play-pause" class="btn-control">▶ Play</button>
-                <button class="btn-control" id="btn-adelantar">+5s ⏩</button>
-            </div>
-            <div class="tiempo-info">
-                <span id="tiempo-actual">0:00</span> / <span id="duracion-total">0:00</span>
+        <div id="canciones-lista" class="buzon-contenedor">
+            <h2>Nuestras Canciones 🎶</h2>
+            <p>Elige una canción para ver su letra y escucharla 🎧</p>
+            
+            <div class="lista-cartas-botones">
+                <button class="btn-carta-item" onclick="abrirCancion('reproductor-DannyLux')">
+                    <span>🎵 Nos pertenecemos - DannyLux</span>
+                    <span class="etiqueta-leida">Escuchar</span>
+                </button>
+                <!-- Aquí puedes agregar más canciones fácilmente en el futuro -->
             </div>
         </div>
 
-        <div class="letras-scroll" id="letras-scroll"></div>
+        <!-- Vista del Reproductor de DannyLux (Oculto al inicio) -->
+        <div id="reproductor-DannyLux" class="carta-estilo oculto" style="width: 100%; max-width: 500px; margin: 0 auto;">
+            <button class="btn-volver-buzon" onclick="cerrarCancion()">⬅ Volver a la Lista</button>
+            
+            <div class="reproductor-card" style="box-shadow: none; background: transparent; padding: 0;">
+                <h3>Nos pertenecemos - DannyLux 💗</h3>
+                <div class="controles-audio" style="margin: 15px 0;">
+                    <button class="btn-control" id="btn-retroceder">⏪ -5s</button>
+                    <button id="btn-play-pause" class="btn-control">▶ Play</button>
+                    <button class="btn-control" id="btn-adelantar">+5s ⏩</button>
+                </div>
+                <div class="tiempo-info" style="margin-bottom: 15px;">
+                    <span id="tiempo-actual">0:00</span> / <span id="duracion-total">0:00</span>
+                </div>
+            </div>
+
+            <div class="letras-scroll" id="letras-scroll" style="max-height: 250px; overflow-y: auto;"></div>
+        </div>
     </div>
 
     <!-- SECCIÓN 2: FOTOS JUNTOS -->
@@ -165,6 +183,11 @@
                 seccionPoema.classList.add('oculto');
                 seccionBuzon.classList.add('oculto');
                 pantallaMenu.classList.remove('oculto');
+                // Opcional: pausar música al salir de la sección
+                if(!musica.paused) {
+                    musica.pause();
+                    btnPlayPause.textContent = "▶ Play";
+                }
             });
         });
 
@@ -193,7 +216,7 @@
         btnIrCancion.addEventListener('click', () => {
             pantallaMenu.classList.add('oculto');
             seccionCancion.classList.remove('oculto');
-            iniciarLetrasSiNoEstan();
+            cerrarCancion(); // Asegurar que muestre la lista primero
         });
 
         btnIrFotos.addEventListener('click', () => {
@@ -223,6 +246,18 @@
             document.getElementById('carta1').classList.add('oculto');
             document.getElementById('carta2').classList.add('oculto');
             document.getElementById('buzon-lista').classList.remove('oculto');
+        }
+
+        // Funciones para el listado de Canciones
+        function abrirCancion(idReproductor) {
+            document.getElementById('canciones-lista').classList.add('oculto');
+            document.getElementById(idReproductor).classList.remove('oculto');
+            iniciarLetrasSiNoEstan();
+        }
+
+        function cerrarCancion() {
+            document.getElementById('reproductor-DannyLux').classList.add('oculto');
+            document.getElementById('canciones-lista').classList.remove('oculto');
         }
 
         // Controles de Música
