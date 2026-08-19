@@ -408,10 +408,16 @@
     contenedorLetras.querySelectorAll('.linea-letra').forEach(el => el.classList.remove('activa'));
     
     let lineaActiva = document.getElementById('linea-' + idAudio + '-' + index);
-    if (lineaActiva) {
+    if (lineaActiva && contenedorLetras) {
         lineaActiva.classList.add('activa');
-        // AQUÍ ESTÁ EL DETALLE QUE MUEVE TODA LA PÁGINA:
-        lineaActiva.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Esto hace que el scroll se mueva SOLAMENTE dentro de la cajita de la letra, 
+        // sin secuestrar ni mover la pantalla del celular hacia abajo:
+        let topPos = lineaActiva.offsetTop - contenedorLetras.offsetTop - (contenedorLetras.clientHeight / 2) + (lineaActiva.clientHeight / 2);
+        contenedorLetras.scrollTo({
+            top: topPos,
+            behavior: 'smooth'
+        });
     }
 }
         function cerrarCancionAll() {
