@@ -32,33 +32,33 @@
         </div>
     </div>
 
-    <!-- SECCIÓN 1: MENÚ DE CANCIONES (5 Ejemplos) -->
+    <!-- SECCIÓN 1: MENÚ DE CANCIONES (5 Ejemplos Sincronizados) -->
     <div class="contenedor-seccion oculto" id="seccion-cancion">
         <button class="btn-volver" id="volver-menu-1">⬅ Volver al Menú</button>
         
         <!-- Listado principal de canciones -->
         <div id="canciones-lista" class="buzon-contenedor">
             <h2>Nuestras Canciones 🎶</h2>
-            <p>Elige una canción para ver su letra y escucharla 🎧</p>
+            <p>Elige una canción para ver su letra sincronizada y escucharla 🎧</p>
             
             <div class="lista-cartas-botones">
-                <button class="btn-carta-item" onclick="abrirCancion('rep-1', 'audio1')">
+                <button class="btn-carta-item" onclick="abrirCancion('rep-1', 'audio1', letrasCancion1)">
                     <span>🎵 Canción 1 - Artista 1</span>
                     <span class="etiqueta-leida">Escuchar</span>
                 </button>
-                <button class="btn-carta-item" onclick="abrirCancion('rep-2', 'audio2')">
+                <button class="btn-carta-item" onclick="abrirCancion('rep-2', 'audio2', letrasCancion2)">
                     <span>🎵 Canción 2 - Artista 2</span>
                     <span class="etiqueta-leida">Escuchar</span>
                 </button>
-                <button class="btn-carta-item" onclick="abrirCancion('rep-3', 'audio3')">
+                <button class="btn-carta-item" onclick="abrirCancion('rep-3', 'audio3', letrasCancion3)">
                     <span>🎵 Canción 3 - Artista 3</span>
                     <span class="etiqueta-leida">Escuchar</span>
                 </button>
-                <button class="btn-carta-item" onclick="abrirCancion('rep-4', 'audio4')">
+                <button class="btn-carta-item" onclick="abrirCancion('rep-4', 'audio4', letrasCancion4)">
                     <span>🎵 Canción 4 - Artista 4</span>
                     <span class="etiqueta-leida">Escuchar</span>
                 </button>
-                <button class="btn-carta-item" onclick="abrirCancion('rep-5', 'audio5')">
+                <button class="btn-carta-item" onclick="abrirCancion('rep-5', 'audio5', letrasCancion5)">
                     <span>🎵 Canción 5 - Artista 5</span>
                     <span class="etiqueta-leida">Escuchar</span>
                 </button>
@@ -77,10 +77,7 @@
             <div class="tiempo-info" style="margin-bottom: 15px;">
                 <span id="tiempo-actual-audio1">0:00</span> / <span id="duracion-audio1">0:00</span>
             </div>
-            <div class="letras-scroll" id="letras-audio1">
-                <p class="linea-letra">Aquí pones la letra de la canción 1...</p>
-                <p class="linea-letra">Línea dos de ejemplo...</p>
-            </div>
+            <div class="letras-scroll" id="letras-scroll-audio1" style="max-height: 230px; overflow-y: auto;"></div>
         </div>
 
         <!-- REPRODUCTOR 2 -->
@@ -95,9 +92,7 @@
             <div class="tiempo-info" style="margin-bottom: 15px;">
                 <span id="tiempo-actual-audio2">0:00</span> / <span id="duracion-audio2">0:00</span>
             </div>
-            <div class="letras-scroll" id="letras-audio2">
-                <p class="linea-letra">Letra de la canción 2...</p>
-            </div>
+            <div class="letras-scroll" id="letras-scroll-audio2" style="max-height: 230px; overflow-y: auto;"></div>
         </div>
 
         <!-- REPRODUCTOR 3 -->
@@ -112,9 +107,7 @@
             <div class="tiempo-info" style="margin-bottom: 15px;">
                 <span id="tiempo-actual-audio3">0:00</span> / <span id="duracion-audio3">0:00</span>
             </div>
-            <div class="letras-scroll" id="letras-audio3">
-                <p class="linea-letra">Letra de la canción 3...</p>
-            </div>
+            <div class="letras-scroll" id="letras-scroll-audio3" style="max-height: 230px; overflow-y: auto;"></div>
         </div>
 
         <!-- REPRODUCTOR 4 -->
@@ -129,9 +122,7 @@
             <div class="tiempo-info" style="margin-bottom: 15px;">
                 <span id="tiempo-actual-audio4">0:00</span> / <span id="duracion-audio4">0:00</span>
             </div>
-            <div class="letras-scroll" id="letras-audio4">
-                <p class="linea-letra">Letra de la canción 4...</p>
-            </div>
+            <div class="letras-scroll" id="letras-scroll-audio4" style="max-height: 230px; overflow-y: auto;"></div>
         </div>
 
         <!-- REPRODUCTOR 5 -->
@@ -146,9 +137,7 @@
             <div class="tiempo-info" style="margin-bottom: 15px;">
                 <span id="tiempo-actual-audio5">0:00</span> / <span id="duracion-audio5">0:00</span>
             </div>
-            <div class="letras-scroll" id="letras-audio5">
-                <p class="linea-letra">Letra de la canción 5...</p>
-            </div>
+            <div class="letras-scroll" id="letras-scroll-audio5" style="max-height: 230px; overflow-y: auto;"></div>
         </div>
     </div>
 
@@ -163,7 +152,7 @@
                 <p class="texto-galeria">Desafiaría a la muerte por ti como Hércules por Meg 😼</p>
             </div>
             <div class="item-galeria">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDBkejVkdjNyZnpoNWoxbWYyeWs3emliYXZtMGVnNzdjd3MxOGNmMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TzoUxq2seGGIw/giphy.gif" alt="Foto 2">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDBkejVkdjNyZnpoNWoxbWYyeWs3emliYXZtMGVnNzdjd3MxOGNmMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TzoUxq2seGGIw" alt="Foto 2">
                 <p class="texto-galeria">Te amo con la intensidad con la que WALL-E ama a Eva 💖</p>
             </div>
             <div class="item-galeria">
@@ -191,7 +180,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN 4: BUZÓN INTERACTIVO (Con 3 cartas de ejemplo) -->
+    <!-- SECCIÓN 4: BUZÓN INTERACTIVO -->
     <div class="contenedor-seccion oculto" id="seccion-buzon">
         <button class="btn-volver" id="volver-menu-4">⬅ Volver al Menú</button>
         
@@ -208,7 +197,6 @@
                     <span>💌 Si algún día no te sientes bien.</span>
                     <span class="etiqueta-leida">Nueva</span>
                 </button>
-                <!-- NUEVA CARTA DE EJEMPLO -->
                 <button class="btn-carta-item" onclick="abrirCarta('carta3')">
                     <span>💌 Una cartita extra de ejemplo</span>
                     <span class="etiqueta-leida">Nueva</span>
@@ -232,7 +220,6 @@
             <p>Si lees esto y no te sientes muy bien, sabes que puedes contar conmigo siempre, si quieres hablarlo lo hablamos, si quieres estar tranquila está bien pero pase lo que pase recuerda que siempre voy a estar para ti en las buenas y en las malas ❤️‍🩹</p>
         </div>
 
-        <!-- CONTENIDO DE LA NUEVA CARTA 3 -->
         <div id="carta3" class="carta-estilo oculto">
             <button class="btn-volver-buzon" onclick="cerrarCarta()">⬅ Volver al Buzón</button>
             <h3>Tercera cartita de ejemplo ✨</h3>
@@ -242,7 +229,7 @@
         </div>
     </div>
 
-    <!-- Audios independientes para cada canción -->
+    <!-- Audios independientes -->
     <audio id="audio1" src="cancion1.mp3"></audio>
     <audio id="audio2" src="cancion2.mp3"></audio>
     <audio id="audio3" src="cancion3.mp3"></audio>
@@ -251,6 +238,34 @@
 
     <!-- CÓDIGO JAVASCRIPT -->
     <script>
+        // --- AQUÍ PUEDES EDITAR LOS SEGUNDOS Y TEXTOS DE CADA CANCIÓN ---
+        const letrasCancion1 = [
+            { tiempo: 0, texto: "🎶" },
+            { tiempo: 10, texto: "Primera línea de la canción 1..." },
+            { tiempo: 20, texto: "Segunda línea de la canción 1..." }
+        ];
+
+        const letrasCancion2 = [
+            { tiempo: 0, texto: "🎶" },
+            { tiempo: 10, texto: "Letra de la canción 2..." }
+        ];
+
+        const letrasCancion3 = [
+            { tiempo: 0, texto: "🎶" },
+            { tiempo: 10, texto: "Letra de la canción 3..." }
+        ];
+
+        const letrasCancion4 = [
+            { tiempo: 0, texto: "🎶" },
+            { tiempo: 10, texto: "Letra de la canción 4..." }
+        ];
+
+        const letrasCancion5 = [
+            { tiempo: 0, texto: "🎶" },
+            { tiempo: 10, texto: "Letra de la canción 5..." }
+        ];
+        // -------------------------------------------------------------
+
         const btnNo = document.getElementById('btn-no');
         const btnSi = document.getElementById('btn-si');
         const pantallaInicial = document.getElementById('pantalla-inicial');
@@ -266,7 +281,6 @@
         const btnIrPoema = document.getElementById('ir-poema');
         const btnIrBuzon = document.getElementById('ir-buzon');
 
-        // Botones generales de volver al menú principal
         document.querySelectorAll('.btn-volver').forEach(btn => {
             btn.addEventListener('click', () => {
                 seccionCancion.classList.add('oculto');
@@ -275,7 +289,6 @@
                 seccionBuzon.classList.add('oculto');
                 pantallaMenu.classList.remove('oculto');
                 
-                // Pausar todos los audios al salir al menú
                 for (let i = 1; i <= 5; i++) {
                     let aud = document.getElementById('audio' + i);
                     if(aud) aud.pause();
@@ -283,7 +296,6 @@
             });
         });
 
-        // Interacción botón No
         const mensajesNo = ["¿Segura? 🥺", "Piénsalo bien...", "Ándale di que sí", "segurisisisisima segura?😿", "Me vas a hacer llorar 😭", "No puedes decir que no jejeje 😇"];
         let contadorNo = 0;
         btnNo.addEventListener('click', () => {
@@ -297,14 +309,12 @@
             }
         });
 
-        // Entrar al menú
         btnSi.addEventListener('click', () => {
             pantallaInicial.classList.add('oculto');
             pantallaMenu.classList.remove('oculto');
             crearLluviaCorazones();
         });
 
-        // Navegación del menú principal
         btnIrCancion.addEventListener('click', () => {
             pantallaMenu.classList.add('oculto');
             seccionCancion.classList.remove('oculto');
@@ -328,7 +338,6 @@
             if(notif) notif.style.display = 'none';
         });
 
-        // Funciones para el Buzón de Cartas
         function abrirCarta(idCarta) {
             document.getElementById('buzon-lista').classList.add('oculto');
             document.getElementById('carta1').classList.add('oculto');
@@ -344,18 +353,59 @@
             document.getElementById('buzon-lista').classList.remove('oculto');
         }
 
-        // Funciones para las Canciones
-        function abrirCancion(idRep, idAudio) {
+        // Sistema para abrir canciones y generar sus letras dinámicamente con scroll automático
+        function abrirCancion(idRep, idAudio, arrayLetras) {
             document.getElementById('canciones-lista').classList.add('oculto');
             cerrarCancionAll();
             document.getElementById(idRep).classList.remove('oculto');
+
+            // Generar las líneas de letra dentro de su respectivo contenedor
+            let contenedorLetras = document.getElementById('letras-scroll-' + idAudio);
+            contenedorLetras.innerHTML = ""; // Limpiar por si acaso
+
+            arrayLetras.forEach((linea, index) => {
+                let p = document.createElement('p');
+                p.classList.add('linea-letra');
+                p.id = 'linea-' + idAudio + '-' + index;
+                p.innerText = linea.texto;
+                contenedorLetras.appendChild(p);
+            });
+
+            // Conectar el evento de tiempo del audio específico con sus letras
+            let aud = document.getElementById(idAudio);
+            aud.ontimeupdate = function() {
+                let tiempoActual = aud.currentTime;
+                for (let i = 0; i < arrayLetras.length; i++) {
+                    let tiempoLinea = arrayLetras[i].tiempo;
+                    let tiempoSiguiente = (i < arrayLetras.length - 1) ? arrayLetras[i+1].tiempo : 99999;
+
+                    if (tiempoActual >= tiempoLinea && tiempoActual < tiempoSiguiente) {
+                        resaltarLinea(idAudio, i);
+                        break;
+                    }
+                }
+            };
+        }
+
+        function resaltarLinea(idAudio, index) {
+            let contenedorLetras = document.getElementById('letras-scroll-' + idAudio);
+            contenedorLetras.querySelectorAll('.linea-letra').forEach(el => el.classList.remove('activa'));
+            
+            let lineaActiva = document.getElementById('linea-' + idAudio + '-' + index);
+            if (lineaActiva) {
+                lineaActiva.classList.add('activa');
+                lineaActiva.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
 
         function cerrarCancionAll() {
             for (let i = 1; i <= 5; i++) {
                 document.getElementById('rep-' + i).classList.add('oculto');
                 let aud = document.getElementById('audio' + i);
-                if(aud) aud.pause();
+                if(aud) {
+                    aud.pause();
+                    aud.ontimeupdate = null;
+                }
             }
             document.getElementById('canciones-lista').classList.remove('oculto');
         }
@@ -366,7 +416,6 @@
             cerrarCancionAll();
         }
 
-        // Controles de Audio Independientes
         function togglePlay(idAudio, btnElement) {
             let aud = document.getElementById(idAudio);
             if (aud.paused) {
@@ -388,7 +437,6 @@
             aud.currentTime = Math.max(0, aud.currentTime - 5);
         }
 
-        // Configurar tiempos de todos los audios automáticamente
         for (let i = 1; i <= 5; i++) {
             let aud = document.getElementById('audio' + i);
             let tAct = document.getElementById('tiempo-actual-audio' + i);
