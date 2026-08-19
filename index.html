@@ -404,16 +404,16 @@
         }
 
         function resaltarLinea(idAudio, index) {
-            let contenedorLetras = document.getElementById('letras-scroll-' + idAudio);
-            contenedorLetras.querySelectorAll('.linea-letra').forEach(el => el.classList.remove('activa'));
-            
-            let lineaActiva = document.getElementById('linea-' + idAudio + '-' + index);
-            if (lineaActiva) {
-                lineaActiva.classList.add('activa');
-                lineaActiva.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
+    let contenedorLetras = document.getElementById('letras-scroll-' + idAudio);
+    contenedorLetras.querySelectorAll('.linea-letra').forEach(el => el.classList.remove('activa'));
+    
+    let lineaActiva = document.getElementById('linea-' + idAudio + '-' + index);
+    if (lineaActiva) {
+        lineaActiva.classList.add('activa');
+        // AQUÍ ESTÁ EL DETALLE QUE MUEVE TODA LA PÁGINA:
+        lineaActiva.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
         function cerrarCancionAll() {
             for (let i = 1; i <= 5; i++) {
                 document.getElementById('rep-' + i).classList.add('oculto');
