@@ -58,7 +58,7 @@
                     <span class="etiqueta-leida" id="etiqueta-musica-1">Escuchar</span>
                 </button>
                 <button class="btn-carta-item" onclick="abrirCancion('rep-2', 'audio2', letrasCancion2, 'etiqueta-musica-2')">
-                    <span>🎵 Canción 2 - Artista 2</span>
+                    <span>🎵 Beso - Josean Log </span>
                     <span class="etiqueta-leida" id="etiqueta-musica-2">Escuchar</span>
                 </button>
                 <button class="btn-carta-item" onclick="abrirCancion('rep-3', 'audio3', letrasCancion3, 'etiqueta-musica-3')">
@@ -94,7 +94,7 @@
         <!-- REPRODUCTOR 2 -->
         <div id="rep-2" class="carta-estilo oculto">
             <button class="btn-volver-buzon" onclick="cerrarCancion('audio2')">⬅ Volver a la Lista</button>
-            <h3>Canción 2 - Artista 2 💗</h3>
+            <h3>Beso - Josean Log 💗</h3>
             <div class="controles-audio" style="margin: 15px 0;">
                 <button class="btn-control" onclick="retroceder('audio2')">⏪ -5s</button>
                 <button class="btn-control" onclick="togglePlay('audio2', this)">▶ Play</button>
@@ -242,7 +242,7 @@
 
     <!-- Audios independientes -->
     <audio id="audio1" src="DannyLux - Nos Pertenecemos [Lyric Video].mp3"></audio>
-    <audio id="audio2" src="cancion2.mp3"></audio>
+    <audio id="audio2" src="Jósean Log - Beso (Lyric Video).mp3"></audio>
     <audio id="audio3" src="cancion3.mp3"></audio>
     <audio id="audio4" src="cancion4.mp3"></audio>
     <audio id="audio5" src="cancion5.mp3"></audio>
@@ -271,7 +271,34 @@
             { tiempo: 163, texto: "Por la eternidad." }
         ];
 
-        const letrasCancion2 = [{ tiempo: 0, texto: "🎶" }, { tiempo: 10, texto: "Letra de la canción 2..." }];
+        const letrasCancion = [
+            { tiempo: 0, texto: "🎶 (Música) 🎶" },
+            { tiempo: 12, texto: "Beso, tan simple como eso" },
+            { tiempo: 16, texto: "Tan simple como un beso" },
+            { tiempo: 19, texto: "Todo puede cambiar" },
+            { tiempo: 24, texto: "Beso, tan simple como eso" },
+            { tiempo: 28, texto: "Tan simple como un beso" },
+            { tiempo: 31, texto: "Todo puede arreglar" },
+            { tiempo: 36, texto: "Bésame, junta tus labios con los míos otra vez" },
+            { tiempo: 42, texto: "Que quiero amarte y decirte lo que sé" },
+            { tiempo: 45, texto: "Pero no encuentro las palabras, bésame" },
+            { tiempo: 48, texto: "Bésame, junta tus labios con los míos otra vez" },
+            { tiempo: 54, texto: "Que para enamorarte como lo hice ayer" },
+            { tiempo: 57, texto: "Hay que empezar por acercarse, bésame" },
+            { tiempo: 63, texto: "Beso, fragmento de universo" },
+            { tiempo: 67, texto: "Ritual frente a lo adverso" },
+            { tiempo: 70, texto: "Capricho natural" },
+            { tiempo: 75, texto: "Beso, lenguaje tan diverso" },
+            { tiempo: 79, texto: "Camino sin regreso" },
+            { tiempo: 82, texto: "Elixir inmortal" },
+            { tiempo: 87, texto: "Bésame, junta tus labios con los míos otra vez" },
+            { tiempo: 93, texto: "Que quiero amarte y decirte lo que sé" },
+            { tiempo: 96, texto: "Pero no encuentro las palabras, bésame" },
+            { tiempo: 100, texto: "Bésame, junta tus labios con los míos otra vez" },
+            { tiempo: 105, texto: "Que para enamorarte como lo hice ayer" },
+            { tiempo: 108, texto: "Hay que empezar por acercarse, bésame" },
+            { tiempo: 115, texto: "(Bésame)" },
+        ];
         const letrasCancion3 = [{ tiempo: 0, texto: "🎶" }, { tiempo: 10, texto: "Letra de la canción 3..." }];
         const letrasCancion4 = [{ tiempo: 0, texto: "🎶" }, { tiempo: 10, texto: "Letra de la canción 4..." }];
         const letrasCancion5 = [{ tiempo: 0, texto: "🎶" }, { tiempo: 10, texto: "Letra de la canción 5..." }];
