@@ -38,12 +38,12 @@
         
         <!-- Listado principal de canciones -->
         <div id="canciones-lista" class="buzon-contenedor">
-            <h2>Nuestras Canciones 🎶</h2>
+            <h2>Canciones que me recuerdan a ti 🎶</h2>
             <p>Elige una canción para ver su letra sincronizada y escucharla 🎧</p>
             
             <div class="lista-cartas-botones">
                 <button class="btn-carta-item" onclick="abrirCancion('rep-1', 'audio1', letrasCancion1)">
-                    <span>🎵 Canción 1 - Artista 1</span>
+                    <span>🎵 Nos pertenecemos - DannyLux </span>
                     <span class="etiqueta-leida">Escuchar</span>
                 </button>
                 <button class="btn-carta-item" onclick="abrirCancion('rep-2', 'audio2', letrasCancion2)">
@@ -68,7 +68,7 @@
         <!-- REPRODUCTOR 1 -->
         <div id="rep-1" class="carta-estilo oculto">
             <button class="btn-volver-buzon" onclick="cerrarCancion('audio1')">⬅ Volver a la Lista</button>
-            <h3>Canción 1 - Artista 1 💗</h3>
+            <h3>Nos pertenecemos - DannyLux 💗</h3>
             <div class="controles-audio" style="margin: 15px 0;">
                 <button class="btn-control" onclick="retroceder('audio1')">⏪ -5s</button>
                 <button class="btn-control" onclick="togglePlay('audio1', this)">▶ Play</button>
@@ -241,8 +241,24 @@
         // --- AQUÍ PUEDES EDITAR LOS SEGUNDOS Y TEXTOS DE CADA CANCIÓN ---
         const letrasCancion1 = [
             { tiempo: 0, texto: "🎶" },
-            { tiempo: 10, texto: "Primera línea de la canción 1..." },
-            { tiempo: 20, texto: "Segunda línea de la canción 1..." }
+            { tiempo: 35, texto: "Eres mía" },
+            { tiempo: 40, texto: "Y nos pertenecemos" },
+            { tiempo: 46, texto: "Sí, nos pertenecemos" },
+            { tiempo: 53, texto: "Por la eternidad" },
+            { tiempo: 62, texto: "Eres mía" },
+            { tiempo: 67, texto: "Y esos labios me aceleran" },
+            { tiempo: 74, texto: "Por qué son todos pa' mi" },
+            { tiempo: 81, texto: "Por la eternidad" },
+            { tiempo: 90, texto: "Eres mía" },
+            { tiempo: 93, texto: "Mía bebé" },
+            { tiempo: 97, texto: "Y tú fiel siempre serás" },
+            { tiempo: 104, texto: "Te lo juro" },
+            { tiempo: 108, texto: "Que yo si te amo" },
+            { tiempo: 111, texto: "Y siempre, siempre te amaré" },
+            { tiempo: 145, texto: "Eres mía" },
+            { tiempo: 148, texto: "Y nos pertenecemos" },
+            { tiempo: 156, texto: "Sí, nos pertenecemos" },
+            { tiempo: 163, texto: "Por la eternidad." }
         ];
 
         const letrasCancion2 = [
